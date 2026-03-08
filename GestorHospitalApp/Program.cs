@@ -10,7 +10,7 @@ namespace GestorHospitalApp
         static void Main()
         {
             Application.EnableVisualStyles();
-            Application.Run(new MenuPrincipal());
+            Application.Run(new Login());
         }
     }
 }
