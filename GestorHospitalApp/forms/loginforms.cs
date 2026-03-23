@@ -6,21 +6,16 @@ using GestorHospitalApp.Componentes;
 namespace GestorHospitalApp.Forms
 {
 
-    public class Login : Form
+    public class Login : VentanaBase
     {
 
         TableLayoutPanel Contenedor_Login = new TableLayoutPanel(),
         Panel_Inicio_De_Sesion = new TableLayoutPanel();
         public Login()
         {
-            WindowState = FormWindowState.Maximized;
-            FormBorderStyle = FormBorderStyle.None;
-            //ALA optimizacion y multiples carpetas, SI DANIEL HUBIERA EMPEZADO A TRABAJAR ANTES
-            // AHORITA ESTARIA JUGNADO KDC
-            BarraSuperior barra = new BarraSuperior(this);
-            Controls.Add(barra);
-
-            //Creamos el contenedor esto esta dentro de forms y hacemos que llene el form y creamos un 3x3 para que este siempre en el centro
+            /*ALA, optimizacion y multiples carpetas, SI DANIEL HUBIERA EMPEZADO A TRABAJAR ANTES
+             AHORITA ESTARIA JUGNADO KDC 
+            Creamos el contenedor esto esta dentro de forms y hacemos que llene el form y creamos un 3x3 para que este siempre en el centro*/
             Contenedor_Login.Dock = DockStyle.Fill;
             Contenedor_Login.RowCount = 3;
             Contenedor_Login.ColumnCount = 3;
@@ -33,7 +28,7 @@ namespace GestorHospitalApp.Forms
             Contenedor_Login.RowStyles.Add(new RowStyle(SizeType.AutoSize));
             Contenedor_Login.RowStyles.Add(new RowStyle(SizeType.Percent, 50));
             //Aqui agregamos el contendor al forms
-            Controls.Add(Contenedor_Login);
+            ContenedorPrincipal.Controls.Add(Contenedor_Login);
             //Agregamos el panel al contenedor y le decimos en que columna y fila lo que queremos que es la del centro
             Contenedor_Login.Controls.Add(Panel_Inicio_De_Sesion, 1, 1);
             Panel_Inicio_De_Sesion.ColumnCount = 1;
@@ -49,39 +44,10 @@ namespace GestorHospitalApp.Forms
             }
 
             //Etiquetas creadas desde la carpeta Componenetes de las clases controles
-            Label Nombre_Clinica_label = Controles.Crear_Label_Titulos("HOSPITAL AXIA"),
-                Usuario_label = Controles.Crear_Label_Subtitulos("USUARIO"),
-                Contrasena_label = Controles.Crear_Label_Subtitulos("CONTRASEÑA"),
-                Recuperar_contrasena_Label = Controles.Crear_Label_Subtitulos("Recuperar Contraseña");
-                Nombre_Clinica_label.Anchor = AnchorStyles.None;
-
-            // Cosas que hace el label de recuperar contrasena
-            // Aqui para cuando pase el cursor tenga cambio de color como las aplciaciones pro
-            Recuperar_contrasena_Label.MouseEnter += (s, e) =>
-            {
-                Recuperar_contrasena_Label.ForeColor = Color.Purple;
-            };
-            Recuperar_contrasena_Label.MouseLeave += (s, e) =>
-            {
-                Recuperar_contrasena_Label.ForeColor = Color.Black;
-            };
-            // Aqui detecta cuando se hace click
-            Recuperar_contrasena_Label.MouseDown += (s, e) =>
-            {
-                Recuperar_contrasena_Label.ForeColor = Color.Purple;
-            };
-
-            Recuperar_contrasena_Label.MouseUp += (s, e) =>
-            {
-                Recuperar_contrasena_Label.ForeColor = Color.Black;
-            };
-            //Cuando hace click lo manda a otra pagina
-            Recuperar_contrasena_Label.Click += (s, e) =>
-            {
-                Recuperar_contrasena_Label.ForeColor = Color.Purple;
-                Recuperar_Contrasena recuperar_Contrasena = new Recuperar_Contrasena();
-                recuperar_Contrasena.Show();
-            };
+            Label Nombre_Clinica_label = Controles.Crear_Label("HOSPITAL AXIA","Arial",18,"Bold"),
+                Usuario_label = Controles.Crear_Label("USUARIO","Arial",16,"Regular"),
+                Contrasena_label = Controles.Crear_Label("CONTRASEÑA","Arial",16,"Regular");
+            Nombre_Clinica_label.Anchor = AnchorStyles.None;
 
             //Botones
             Button Boton_inicio_sesion = Controles.Crear_Boton("Inicio de Sesion"),
@@ -132,11 +98,10 @@ namespace GestorHospitalApp.Forms
             Panel_Inicio_De_Sesion.Controls.Add(Usuario_Textbox, 0, 2);
             Panel_Inicio_De_Sesion.Controls.Add(Contrasena_label, 0, 3);
             Panel_Inicio_De_Sesion.Controls.Add(Contrasena_TextBox, 0, 4);
-            Panel_Inicio_De_Sesion.Controls.Add(Recuperar_contrasena_Label, 0, 5);
             Panel_Inicio_De_Sesion.Controls.Add(Boton_inicio_sesion, 0, 6);
             Panel_Inicio_De_Sesion.Controls.Add(Boton_Salir, 0, 7);
         }
 
-        
+
     }
 }

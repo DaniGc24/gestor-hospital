@@ -20,7 +20,7 @@ namespace GestorHospitalApp.Componentes
             BackColor = Color.DarkSlateBlue;
 
             //Creamos el botones y label de la barra superior
-            Label Etiqueta_Titulo_Barra_Superior = Controles.Crear_Label_Titulos("Hospital Axia");
+            Label Etiqueta_Titulo_Barra_Superior = Controles.Crear_Label("Hospital Axia","Arial",16,"Regular");
             Etiqueta_Titulo_Barra_Superior.Location = new Point(10, 10);
             Controls.Add(Etiqueta_Titulo_Barra_Superior);
 
@@ -29,7 +29,6 @@ namespace GestorHospitalApp.Componentes
             {
                 Application.Exit();
             };
-            Controls.Add(Boton_Cerrar);
 
             Button Boton_Maximizar = Controles.Crear_Boton_Barra_Superior("Imagenes//Maximizar_Barra_Superior.png");
 
@@ -45,15 +44,12 @@ namespace GestorHospitalApp.Componentes
                 }
             };
 
-             Controls.Add(Boton_Maximizar);
-
             Button Boton_Minimizar = Controles.Crear_Boton_Barra_Superior("Imagenes//Minimizar_Barra_Superior.png");
 
             Boton_Minimizar.Click += (s, e) =>
             {
                 form.WindowState = FormWindowState.Minimized;
             };
-            Controls.Add(Boton_Minimizar);
 
             MouseDown += (s, e) =>
             {
@@ -63,6 +59,10 @@ namespace GestorHospitalApp.Componentes
                     SendMessage(form.Handle, 0xA1, 0x2, 0);
                 }
             };
+            
+            Controls.Add(Boton_Minimizar);
+            Controls.Add(Boton_Maximizar);
+            Controls.Add(Boton_Cerrar);
             
         }
     }
