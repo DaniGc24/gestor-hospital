@@ -2,23 +2,17 @@ namespace GestorHospitalApp.Componentes
 {
     public static class Controles
     {
-        public static Label Crear_Label_Titulos(String Texto)
+        //Crear un switch para label para tener eleccion de tipo de texto sin tener
+        //que crear otra clase
+        public static Label Crear_Label(String Texto,String Tipodeletra, int Tamano, String Estilo)
         {
             Label label = new Label();
             label.Text = Texto;
-            label.Font = new Font("Arial", 18, FontStyle.Bold);
+            label.Font = new Font(Tipodeletra, Tamano, (FontStyle)Enum.Parse(typeof(FontStyle), Estilo));
             label.AutoSize = true;
             return label;
         }
 
-        public static Label Crear_Label_Subtitulos(String Texto)
-        {
-            Label label = new Label();
-            label.Text = Texto;
-            label.Font = new Font("Arial", 10);
-            label.AutoSize = true;
-            return label;
-        }
         public static Button Crear_Boton_Barra_Superior(string rutaImagen)
         {
             Button boton = new Button();
